@@ -1,0 +1,852 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anusuya G | Personal Portfolio</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --bg: #f5f8ff;
+            --card: #ffffff;
+            --text: #172554;
+            --muted: #64748b;
+            --primary: #2563eb;
+            --border: #dbeafe;
+            --shadow: 0 12px 30px #2563eb12;
+        }
+
+        body.dark {
+            --bg: #0f172a;
+            --card: #1e293b;
+            --text: #f1f5f9;
+            --muted: #cbd5e1;
+            --primary: #60a5fa;
+            --border: #334155;
+            --shadow: 0 12px 30px #00000025;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            padding: 16px 7%;
+            background: var(--card);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 3px 15px #00000008;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary);
+            white-space: nowrap;
+        }
+
+        nav ul {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            list-style: none;
+            gap: 18px;
+        }
+
+        nav ul a {
+            font-size: 13px;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav ul a:hover {
+            color: var(--primary);
+        }
+
+        #theme {
+            padding: 9px 13px;
+            border: 1px solid var(--border);
+            background: var(--bg);
+            color: var(--text);
+            border-radius: 20px;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        section {
+            padding: 75px 8%;
+            scroll-margin-top: 70px;
+        }
+
+        .hero {
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 45px;
+        }
+
+        .hero-content {
+            max-width: 650px;
+        }
+
+        .tag {
+            color: var(--primary);
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        h1 {
+            font-size: clamp(38px, 5vw, 65px);
+            line-height: 1.2;
+            margin: 15px 0;
+        }
+
+        h1 span,
+        h2 span {
+            color: var(--primary);
+        }
+
+        .hero h2 {
+            font-size: clamp(20px, 3vw, 28px);
+        }
+
+        .hero p {
+            color: var(--muted);
+            margin: 20px 0 25px;
+            max-width: 560px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 11px 21px;
+            margin: 5px 7px 5px 0;
+            border-radius: 8px;
+            background: var(--primary);
+            color: #ffffff;
+            border: 1px solid var(--primary);
+            font-size: 14px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            opacity: 0.9;
+        }
+
+        .btn-outline {
+            color: var(--primary);
+            background: transparent;
+        }
+
+        .profile {
+            width: 280px;
+            height: 280px;
+            flex-shrink: 0;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #bfdbfe, #dbeafe, #eff6ff);
+            border: 7px solid var(--card);
+            outline: 2px solid var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 85px;
+            font-weight: bold;
+            color: #2563eb;
+            box-shadow: 0 15px 45px #2563eb20;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: clamp(28px, 4vw, 36px);
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: var(--muted);
+            margin-bottom: 35px;
+        }
+
+        .about-box {
+            max-width: 850px;
+            margin: auto;
+            padding: 30px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .about-box p {
+            color: var(--muted);
+            margin-bottom: 15px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 22px;
+        }
+
+        .card {
+            padding: 25px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .card h3 {
+            color: var(--primary);
+            font-size: 19px;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .tags span {
+            padding: 5px 11px;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            background: var(--bg);
+            color: var(--primary);
+            font-size: 12px;
+        }
+
+        .skill {
+            margin: 18px 0;
+        }
+
+        .skill-top {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 7px;
+            font-size: 14px;
+        }
+
+        .bar {
+            height: 8px;
+            background: var(--border);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .bar div {
+            height: 100%;
+            background: var(--primary);
+            border-radius: 10px;
+        }
+
+        .workshop-card {
+            max-width: 950px;
+            margin: 0 auto;
+            padding: 18px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .workshop-image {
+            display: block;
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .workshop-image:hover {
+            transform: scale(1.01);
+        }
+
+        .workshop-caption {
+            text-align: center;
+            color: var(--muted);
+            margin-top: 18px;
+            font-size: 16px;
+        }
+
+        .contact-box {
+            max-width: 700px;
+            margin: auto;
+            padding: 35px;
+            text-align: center;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+        }
+
+        .contact-box h3 {
+            font-size: 25px;
+            color: var(--primary);
+        }
+
+        .contact-box p {
+            color: var(--muted);
+            margin: 12px 0;
+        }
+
+        footer {
+            padding: 25px;
+            text-align: center;
+            background: var(--card);
+            border-top: 1px solid var(--border);
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        @media (max-width: 1000px) {
+            nav {
+                flex-wrap: wrap;
+            }
+
+            nav ul {
+                gap: 12px;
+            }
+
+            .grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 700px) {
+            nav {
+                justify-content: center;
+                padding: 15px 4%;
+            }
+
+            nav ul {
+                justify-content: center;
+                width: 100%;
+            }
+
+            nav ul a {
+                font-size: 12px;
+            }
+
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+                justify-content: center;
+                padding-top: 55px;
+            }
+
+            .hero p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .profile {
+                width: 200px;
+                height: 200px;
+                font-size: 65px;
+            }
+
+            section {
+                padding: 55px 5%;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-box,
+            .contact-box {
+                padding: 22px;
+            }
+
+            .workshop-card {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo">Anusuya<span>.</span></div>
+
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#workshop">Workshop</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <button id="theme" onclick="toggleTheme()">☾ Theme</button>
+    </nav>
+
+    <!-- HOME SECTION -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="tag">WELCOME TO MY PORTFOLIO</div>
+
+            <h1>Hi, I'm <span>Anusuya G</span></h1>
+
+            <h2>Computer Science Engineering Student</h2>
+
+            <p>
+                I am a CSE student passionate about web development,
+                programming, and data visualization. I enjoy building
+                creative digital solutions, exploring new technologies,
+                and improving my technical skills through practical work.
+            </p>
+
+            <a href="#projects" class="btn">Explore My Projects</a>
+            <a href="#contact" class="btn btn-outline">Contact Me</a>
+        </div>
+
+        <div class="profile">AG</div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about">
+        <h2 class="section-title">About <span>Me</span></h2>
+        <p class="subtitle">A little introduction about myself</p>
+
+        <div class="about-box">
+            <p>
+                I am a Computer Science Engineering student at
+                KPR Institute of Engineering and Technology.
+                I am interested in web development, Java programming,
+                and data visualization using tools such as Power BI
+                and Tableau.
+            </p>
+
+            <p>
+                I enjoy participating in technical events, working
+                with teams, presenting ideas, and learning by building
+                projects. My goal is to become a skilled professional,
+                develop innovative solutions, and work towards
+                financial independence and entrepreneurship.
+            </p>
+
+            <div class="tags" style="justify-content:center">
+                <span>CSE Student</span>
+                <span>Web Developer</span>
+                <span>Java Programmer</span>
+                <span>Creative Learner</span>
+                <span>Data Visualization</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section id="skills">
+        <h2 class="section-title">My <span>Skills</span></h2>
+        <p class="subtitle">Technologies and tools I am learning</p>
+
+        <div class="grid">
+
+            <div class="card">
+                <h3>Web Development</h3>
+                <p>Building responsive web pages and user interfaces.</p>
+
+                <div class="skill">
+                    <div class="skill-top">
+                        <span>HTML</span>
+                    </div>
+                    <div class="bar">
+                        <div style="width:85%"></div>
+                    </div>
+                </div>
+
+                <div class="skill">
+                    <div class="skill-top">
+                        <span>CSS</span>
+                    </div>
+                    <div class="bar">
+                        <div style="width:80%"></div>
+                    </div>
+                </div>
+
+                <div class="skill">
+                    <div class="skill-top">
+                        <span>JavaScript</span>
+                    </div>
+                    <div class="bar">
+                        <div style="width:60%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Programming</h3>
+                <p>
+                    Learning programming concepts, object-oriented
+                    programming, and problem-solving techniques.
+                </p>
+
+                <div class="tags">
+                    <span>Java</span>
+                    <span>Python Basics</span>
+                    <span>OOP</span>
+                    <span>Problem Solving</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Data Visualization</h3>
+                <p>
+                    Exploring datasets and presenting information
+                    through meaningful charts and dashboards.
+                </p>
+
+                <div class="tags">
+                    <span>Power BI</span>
+                    <span>Tableau</span>
+                    <span>Matplotlib</span>
+                    <span>Excel</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects">
+        <h2 class="section-title">My <span>Projects</span></h2>
+        <p class="subtitle">Academic projects and technical explorations</p>
+
+        <div class="grid">
+
+            <div class="card">
+                <h3>Student AI Guidance Engine</h3>
+                <p>
+                    An AI-powered student assistance concept designed
+                    to answer questions about academics, examinations,
+                    campus facilities, college events, and student services.
+                </p>
+
+                <div class="tags">
+                    <span>AI</span>
+                    <span>Chatbot</span>
+                    <span>Web Development</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Legal Metrology Compliance</h3>
+                <p>
+                    A project concept that checks packaged product
+                    labels for missing or incorrect compliance details
+                    and helps users understand consumer rights.
+                </p>
+
+                <div class="tags">
+                    <span>Image Processing</span>
+                    <span>Compliance</span>
+                    <span>Web Application</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Data Visualization Dashboard</h3>
+                <p>
+                    An interactive dashboard concept using charts,
+                    filters, and data-driven insights to communicate
+                    information clearly.
+                </p>
+
+                <div class="tags">
+                    <span>Power BI</span>
+                    <span>Tableau</span>
+                    <span>Analytics</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Image Corruption Robustness</h3>
+                <p>
+                    A deep learning research project exploring adaptive
+                    blur-severity training to improve lightweight CNN
+                    robustness across unseen image corruptions.
+                </p>
+
+                <div class="tags">
+                    <span>Python</span>
+                    <span>CNN</span>
+                    <span>Deep Learning</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Waste-to-Energy Prototype</h3>
+                <p>
+                    A prototype exploring thermoelectric energy
+                    conversion using a heat source, a TEG module,
+                    Arduino, and sensor-based monitoring.
+                </p>
+
+                <div class="tags">
+                    <span>Arduino</span>
+                    <span>TEG</span>
+                    <span>Energy</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Personal Portfolio Website</h3>
+                <p>
+                    A responsive personal portfolio created using
+                    HTML, CSS, and JavaScript to present my skills,
+                    projects, education, and achievements.
+                </p>
+
+                <div class="tags">
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>JavaScript</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- GITHUB WORKSHOP PHOTO SECTION -->
+    <section id="workshop">
+        <h2 class="section-title">GitHub Workshop <span>Memories</span></h2>
+
+        <p class="subtitle">
+            Started with curiosity, ended with happiness ❤️
+        </p>
+
+        <div class="workshop-card">
+
+            <img
+                src="github-workshop-meme.png"
+                alt="GitHub workshop meme showing the HTML learning experience"
+                class="workshop-image"
+                loading="lazy"
+            >
+
+            <p class="workshop-caption">
+                My GitHub workshop experience — created my first
+                HTML file, learned something new, and had lots of fun! 💻🐱
+            </p>
+
+            <div class="tags" style="justify-content:center">
+                <span>GitHub</span>
+                <span>HTML</span>
+                <span>Learning</span>
+                <span>Workshop Memories</span>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- INTERNSHIPS AND ACHIEVEMENTS -->
+    <section id="experience">
+        <h2 class="section-title">Internships & <span>Achievements</span></h2>
+        <p class="subtitle">Learning, teamwork, and experiences</p>
+
+        <div class="grid">
+
+            <div class="card">
+                <h3>Web Development Intern</h3>
+                <p><strong>Thiranex</strong></p>
+                <p>
+                    Gained practical exposure to web development
+                    concepts and application-building workflows.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Basic Java Programming</h3>
+                <p><strong>Brainery Spot Technology</strong></p>
+                <p>
+                    Developed foundational knowledge of Java
+                    programming and object-oriented concepts.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Aavishkar'26</h3>
+                <p><strong>Team Paper Presentation</strong></p>
+                <p>
+                    Presented the concept of a Solar Assisted
+                    Waste-to-Energy System at Coimbatore Institute
+                    of Engineering.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>NEXERA</h3>
+                <p><strong>Technical Events</strong></p>
+                <p>
+                    Participated in team paper presentation and
+                    Prompt Verse activities at Coimbatore Institute
+                    of Engineering.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>COSIP CROESO'26</h3>
+                <p><strong>Mock Court — Third Prize</strong></p>
+                <p>
+                    Secured third prize as a team in the Mock Court
+                    event at PSG College of Arts and Science.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>GitHub Workshop</h3>
+                <p><strong>Hands-on Learning</strong></p>
+                <p>
+                    Explored GitHub repositories and HTML file
+                    publishing while enjoying a practical,
+                    collaborative learning experience.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- EDUCATION SECTION -->
+    <section id="education">
+        <h2 class="section-title">My <span>Education</span></h2>
+        <p class="subtitle">My academic background</p>
+
+        <div class="grid">
+
+            <div class="card">
+                <h3>B.E. Computer Science Engineering</h3>
+                <p>KPR Institute of Engineering and Technology</p>
+                <p>CGPA: 9.2</p>
+            </div>
+
+            <div class="card">
+                <h3>Higher Secondary — 12th</h3>
+                <p>Government Model School, Tiruppur</p>
+                <p>Score: 93.6%</p>
+            </div>
+
+            <div class="card">
+                <h3>SSLC — 10th</h3>
+                <p>Government Higher Secondary School, Kanakkampalayam</p>
+                <p>Score: 94.2%</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact">
+        <h2 class="section-title">Get In <span>Touch</span></h2>
+
+        <p class="subtitle">
+            Let's connect, share ideas, and explore opportunities
+        </p>
+
+        <div class="contact-box">
+            <h3>Anusuya G</h3>
+
+            <p>
+                Computer Science Engineering Student |
+                Web Developer | Java Programmer
+            </p>
+
+            <p>
+                Interested in web development, programming,
+                data visualization, and innovative technology.
+            </p>
+
+            <a
+                class="btn"
+                href="mailto:your-email@example.com"
+            >
+                Email Me
+            </a>
+
+            <a
+                class="btn btn-outline"
+                href="https://www.linkedin.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                LinkedIn
+            </a>
+
+            <a
+                class="btn btn-outline"
+                href="https://github.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                GitHub
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2026 Anusuya G. All Rights Reserved.</p>
+        <p>Designed with passion, creativity, and curiosity 💙</p>
+    </footer>
+
+    <!-- DARK MODE SCRIPT -->
+    <script>
+        function toggleTheme() {
+            document.body.classList.toggle("dark");
+
+            const button = document.getElementById("theme");
+
+            if (document.body.classList.contains("dark")) {
+                button.textContent = "☀ Light";
+            } else {
+                button.textContent = "☾ Theme";
+            }
+        }
+    </script>
+
+</body>
+</html>
